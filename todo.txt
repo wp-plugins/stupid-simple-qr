@@ -1,0 +1,5 @@
+Need to do:
+- Add stuff here
+
+1.0.0
+- Basic functions in place
