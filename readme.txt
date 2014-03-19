@@ -33,7 +33,7 @@ That's it. You are done!
 
 == Frequently Asked Questions ==
 
-= Why did you create this when there are som many other QR plugins? =
+= Why did you create this when there are so many other QR plugins? =
 
 There are a bunch of other QR related plugins. However they are for including QRs in your posts. **This
 creates QR images FOR YOUR POSTS!**
