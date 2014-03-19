@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: gabrielmcgovern
 Donate link: http://www.dreamhost.com/donate.cgi?id=17157
-Tags: qr, quick response, qr code, author, admin
+Tags: QR, Quick Response, QR Code, Author, Admin, QR Codes Kill Kittens, Kill Kittens, Kittens
 Requires at least: 3.0
 Tested up to: 3.8.1
 Stable tag: 1.0.1
@@ -14,14 +14,14 @@ Allow authors to easily print a QR code for each page/post.
 
 Adds a 'QR' button next to 'Get Shortlink' on published pages and posts. 
 
-Your authors can click it to print out a QR image to promote what they created. The QR code is created using the 'shortlink'.
+Your authors can click it to print out a QR image and promote what they created. The QR code is created using the 'shortlink'.
 The plugin uses the Google Charts API and (as the name applies) is stupid simple to set up and use!
 
 = Options =
 There is one optional feature:
 
 In the settings you can add some text that will be appended to the URL on the QR codes. This can be used for tracking purposed. 
-For instance, You can set it as: *&medium=qr*. That way, links will look like: *http://www.yourdomain.com/?p=195&medium=qr* in your 
+For instance, You can set it as: *&medium=qr*. That way, links will look like: *www.yourdomain.com/?p=195&medium=qr* in your 
 analytics. 
 
 == Installation ==
@@ -55,6 +55,7 @@ If someone wants to create QR codes:
 == Screenshots ==
 
 1. Look ma, a QR button!
+1. Pushing the button creates a QR code!
 
 == Changelog ==
 
