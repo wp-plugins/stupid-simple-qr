@@ -21,7 +21,7 @@ The plugin uses the Google Charts API and (as the name applies) is stupid simple
 There is one optional feature:
 
 In the settings you can add some text that will be appended to the URL on the QR codes. This can be used for tracking purposed. 
-For instance, You can set it as: *&medium=qr*. That way, links will look like: *yourdomain.com/?p=195&medium=qr* in your 
+For instance, You can set it as: `&medium=qr`. That way, links will look like: `yourdomain.com/?p=195&medium=qr` in your 
 analytics. 
 
 == Installation ==
