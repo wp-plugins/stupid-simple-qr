@@ -40,7 +40,7 @@ creates QR images FOR YOUR POSTS!**
 
 My authors needed a simple way to get the QR of the posts they create. This was the solution.
 
-= Does it do X, Y, or Z??? =
+= Does it do x, y, or z??? =
 No, no and no.
 
 = Who uses QR codes anyway? =
