@@ -4,7 +4,7 @@ Donate link: http://www.dreamhost.com/donate.cgi?id=17157
 Tags: QR, Quick Response, QR Code, Author, Admin, QR Codes Kill Kittens, Kill Kittens, Kittens
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,12 +61,14 @@ If someone wants to create QR codes:
 1. Pushing the button creates a QR code!
 
 == Changelog ==
+= 1.0.3 = 
+- Bug fix: URL encode append text
 
 = 1.0.2 =
 - Allow the options to be set at a network level.
 
 = 1.0.1 =
-Just cleaned the code a bit
+- Just cleaned the code a bit
 
 = 1.0.0 =
-Seems stable enough. Have at it! 
+- Seems stable enough. Have at it! 

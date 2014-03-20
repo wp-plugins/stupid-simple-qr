@@ -3,7 +3,7 @@
 	Plugin Name: Stupid Simple QR
 	Plugin URI: http://wordpress.org/extend/plugins/stupid-simple-qr/
 	Description: Adds a 'QR' button next to 'Get Shortlink' on published pages and posts. 
-	Version: 1.0.2
+	Version: 1.0.3
 	Author: Gabriel Nagmay
 	Author URI: http://gabriel@nagmay.com
 	License: GPL2
@@ -50,7 +50,7 @@ function ssqr_scripts_and_styles($hook) {
 			?>
          	<script type="text/javascript"> 
 				/* <![CDATA[ */
-				var ssqrAppend = "<?php echo esc_attr( $ssqr_options['ssqr_append']); if (is_multisite()){ echo esc_attr( $ssqr_network_options['ssqr_append']); } ?>"; 
+				var ssqrAppend = "<?php echo urlencode( $ssqr_options['ssqr_append']); if (is_multisite()){ echo urlencode( $ssqr_network_options['ssqr_append']); } ?>"; 
 				/* ]]> */
             </script>
     		<?
