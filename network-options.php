@@ -1,150 +1,60 @@
 <?php
+/* Uses the old, no-object way to set up the options */
 
-
-
-
-class SSQRNetworkSettingsPage
-{
-    /**
-     * Holds the values to be used in the fields callbacks
-     */
-    private $options;
-
-    /**
-     * Start up
-     */
-    public function __construct()
-    {
-		add_action( 'network_admin_menu', array( $this, 'add_network_plugin_page' ) );
-        //add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
-        add_action( 'admin_init', array( $this, 'page_init' ) );
-		
-		
-		
-    }
-	
-    /**
-     * Add network options page
-     */	
-	 public function add_network_plugin_page() {
-		add_submenu_page( 
+add_action( 'network_admin_menu', 'ssqr_network_menu_settings');
+function ssqr_network_menu_settings(){
+			add_submenu_page( 
 				  'settings.php',   //or 'options.php' 
 					'Settings Admin', 
-					'QR', 
+					'Stupid Simple QR', 
 					'manage_options', 
 					'ssqr-setting', 
-					array( $this, 'create_admin_page' )
+					'create_admin_page'
 			);
-	
-	}
-
-
-
-    /**
-     * Add options page
-     */
-    public function add_plugin_page()
-    {
-        // This page will be under "Settings"
-        add_options_page(
-            'Settings Admin', 
-            'QR', 
-            'manage_options', 
-            'ssqr-setting', 
-            array( $this, 'create_admin_page' )
-        );
-    }
-
-    /**
-     * Options page callback
-     */
-    public function create_admin_page()
-    {
-        // Set class property
-        $this->options = get_site_option( 'ssqr_options' );
-        ?>
-        <div class="wrap">
-            <?php screen_icon(); ?>
-            <h2>Stupid Simple QR Settings</h2>           
-            <form action="settings.php" method="post">
-            <?php
-                // This prints out all hidden setting fields
-                settings_fields( 'ssqr_group' );   
-                do_settings_sections( 'ssqr-setting' );
-                submit_button(); 
-            ?>
-            </form>
-        </div>
-        <?php
-    }
-
-    /**
-     * Register and add settings
-     */
-    public function page_init()
-    {        
-        register_setting(
-            'ssqr_group', // Option group
-            'ssqr_options', // Option name
-            array( $this, 'sanitize' ) // Sanitize
-        );
-
-        add_settings_section(
-            'setting_section_id', // ID
-            'Custom Settings', // Title
-            array( $this, 'print_section_info' ), // Callback
-            'ssqr-setting' // Page
-        );  
- 
-        add_settings_field(
-            'ssqr_append', // ID
-            'Append to shortcode:', // Title 
-            array( $this, 'ssqr_append_callback' ), // Callback
-            'ssqr-setting', // Page
-            'setting_section_id' // Section           
-        );   
-    }
-
-    /**
-     * Sanitize each setting field as needed
-     *
-     * @param array $input Contains all settings fields as array keys
-     */
-    public function sanitize( $input )
-    {
-        if( !is_numeric( $input['id_number'] ) )
-            $input['id_number'] = '';  
-
-        if( !empty( $input['title'] ) )
-            $input['title'] = sanitize_text_field( $input['title'] );
-
-        return $input;
-    }
-
-    /** 
-     * Print the Section text
-     */
-    public function print_section_info()
-    {
-        print 'This allows you to add URL variables (or anything) for tracking purposes. For instance: <em>&medium=qr</em>';
-    }
-	
-
-    /** 
-     * Get the settings option array and print one of its values
-     */
-    public function ssqr_append_callback()
-    {
-        printf(
-            '<textarea id="ssqr_append" name="ssqr_options[ssqr_append]" style="width:100%%;">%s</textarea>',
-            esc_attr( $this->options['ssqr_append'])
-        );
-    }
-	
 }
 
-if( is_admin() ){
-    $ssqr_settings_page = new SSQRNetworkSettingsPage();
-}
-	
+function create_admin_page() {
+    if (is_multisite() && current_user_can('manage_network') ) {
+
+    ?>
+
+<div class="wrap">
+  <h2>Stupid Simple QR: Network Settings</h2>
+  
+  <?php 
+
+    if (isset($_POST['action']) && $_POST['action'] == 'update_ssqr_settings') {
+    	check_admin_referer('save_network_settings', 'ssqr-plugin');
+        $network_settings = $_POST['network_settings'];    																	//store option values in a variable
+        $network_settings = array_map( 'sanitize_text_field', $network_settings );        									//use array map function to sanitize option values
+        update_site_option( 'ssqr_network_options', $network_settings );        											//save option values
+        echo '<div id="message" class="updated fade"><p><strong>Stupid Simple Settings Updated!</strong></p></div>';        //just assume it all went according to plan
+	} //if POST
+
 	?>
+
+	<p>This allows you to add URL variables (or anything, really) for tracking purposes. <br />For instance: <em>&amp;medium=qr</em></p>
+  	<form method="post">
+    	<input type="hidden" name="action" value="update_ssqr_settings" />
+    	<?php 
+			$ssqr_network_options = get_site_option( 'ssqr_network_options' ); 
+			$ssqr_append = $ssqr_network_options['ssqr_append']; 
+			wp_nonce_field('save_network_settings', 'ssqr-plugin');
+		?>
+        <table class="form-table">
+            <tr><th scope="row">Append to shortcode:</th><td><input type="text" name="network_settings[ssqr_append]" value="<?php echo $ssqr_append; ?>" /></td></tr>
+            <tr><td></td><td> <input type="submit" class="button-primary" name="update_ssqr_settings" value="Save Settings" /></td></tr>
+        </table>
+  	</form>
+ </div>
+  	<?php
+
+    } // end if multisite 
+
+	?>
+
+<?php
+
+} // end function 
+
+?>

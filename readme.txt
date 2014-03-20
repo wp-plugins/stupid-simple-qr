@@ -4,7 +4,7 @@ Donate link: http://www.dreamhost.com/donate.cgi?id=17157
 Tags: QR, Quick Response, QR Code, Author, Admin, QR Codes Kill Kittens, Kill Kittens, Kittens
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,11 +18,7 @@ Your authors can click it to print out a QR image and promote what they created.
 The plugin uses the Google Charts API and (as the name applies) is stupid simple to set up and use!
 
 = Options =
-There is one optional feature:
-
-In the settings you can add some text that will be appended to the URL on the QR codes. This can be used for tracking purposed. 
-For instance, You can set it as: `&medium=qr`. That way, links will look like: `yourdomain.com/?p=195&medium=qr` in your 
-analytics. 
+There is one optional feature. It allows you to add arbitrary text to the end of the shortcode. This can be useful for tracking purposes.
 
 == Installation ==
 
@@ -39,6 +35,13 @@ There are a bunch of other QR related plugins. However they are for including QR
 creates QR images FOR YOUR POSTS!**
 
 My authors needed a simple way to get the QR of the posts they create. This was the solution.
+
+= How does the append option work? =
+In the settings you can add some text that will be appended to the URL on the QR codes. This can be used for tracking purposed. 
+For instance, You can set it as: `&medium=qr`. That way, links will look like: `yourdomain.com/?p=195&medium=qr` in your 
+analytics. 
+
+For multisite, this can be set at both the site and network level. They will both be added. 
 
 = Does it do x, y, or z??? =
 No, no and no.
@@ -58,6 +61,9 @@ If someone wants to create QR codes:
 1. Pushing the button creates a QR code!
 
 == Changelog ==
+
+= 1.0.2 =
+- Allow the options to be set at a network level.
 
 = 1.0.1 =
 Just cleaned the code a bit
