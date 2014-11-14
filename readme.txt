@@ -5,7 +5,7 @@ Contributors: gabrielmcgovern
 Donate link: http://www.dreamhost.com/donate.cgi?id=17157
 Tags: Beer, AllGrain.Beer, AllGrainBeer, oEmbed, embed
 Requires at least: 3.7
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 1.0.0
 
 Adds oEmbed support for AllGrain.Beer
